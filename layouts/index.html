@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<title>{{ .Title }}</title>
+<meta charset="utf-8">
+{{ with resources.Get "index.jsx" }}
+{{ $options := dict "defines" (dict "process.env.NODE_ENV" "\"development\"") }}
+{{ $script := . | js.Build $options }}
+<script src="{{ $script.RelPermalink }}" defer></script>
+{{ end }}
+</head>
+<body>
+<h1>Hello World</h1>
+<div id="react"></div>
+</body>
+</html>

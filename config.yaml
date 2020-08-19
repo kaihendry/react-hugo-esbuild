@@ -1,0 +1,7 @@
+baseURL: 'https://example.com/'
+languageCode: en
+title: react minimal example
+disableKinds:
+  - taxonomyTerm
+  - sitemap
+  - RSS
