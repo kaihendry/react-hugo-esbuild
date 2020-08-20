@@ -3,7 +3,4 @@
   command = "hugo --gc"
 
 [build.environment]
-  HUGO_VERSION = "0.74.1"
-
-[context.production.environment]
-  NODE_ENV = "production"
+  HUGO_VERSION = "0.74.3"
