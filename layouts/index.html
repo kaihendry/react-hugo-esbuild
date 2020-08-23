@@ -4,7 +4,7 @@
 <title>{{ .Title }}</title>
 <meta charset="utf-8">
 {{ with resources.Get "index.jsx" }}
-{{ $options := dict "defines" (dict "process.env.NODE_ENV" "\"development\"") }}
+{{ $options := dict "defines" (dict "process.env.NODE_ENV" "\"development\"" "process.env.REACT_APP_STRIPE_API_PUBLIC" "\"pk_test_1amuSFIBwCaicwoNGifewy4a\"") }}
 {{ $script := . | js.Build $options }}
 <script src="{{ $script.RelPermalink }}" defer></script>
 {{ end }}

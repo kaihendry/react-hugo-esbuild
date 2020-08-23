@@ -6,7 +6,7 @@ import Products from './components/products'
 import CartDisplay from './components/cart-display'
 import { CartProvider } from 'use-shopping-cart'
 
-const stripePromise = loadStripe('testing')
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_PUBLIC)
 
 const fakeData = [
   {
