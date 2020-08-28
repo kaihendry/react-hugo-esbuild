@@ -8,23 +8,6 @@ import { CartProvider } from 'use-shopping-cart'
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_PUBLIC)
 
-const fakeData = [
-  {
-    name: 'Bananas',
-    sku: 'sku_GBJ2Ep8246qeeT',
-    price: 400,
-    image: 'https://www.fillmurray.com/300/300',
-    currency: 'USD'
-  },
-  {
-    name: 'Tangerines',
-    sku: 'sku_GBJ2WWfMaGNC2Z',
-    price: 100,
-    image: 'https://www.fillmurray.com/300/300',
-    currency: 'USD'
-  }
-]
-
 const App = () => {
   return (
     <CartProvider
