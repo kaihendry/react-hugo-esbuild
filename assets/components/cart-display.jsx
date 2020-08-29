@@ -14,20 +14,25 @@ const CartDisplay = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+	console.log("transform to lineitems:", cartDetails)
 
-    const response = await fetch('/.netlify/functions/create-session', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(cartDetails)
-    })
-      .then((res) => {
-        return res.json()
-      })
-      .catch((error) => console.log(error))
+const lineItems = []
+    for (const sku in cartDetails)
+      lineItems.push({ price: sku, quantity: cartDetails[sku].quantity })
 
-    redirectToCheckout({ sessionId: response.sessionId })
+    const options = {
+      mode: 'payment',
+      lineItems,
+      successUrl: 'https://stripe.com',
+      cancelUrl: 'https://twitter.com/kaihendry',
+      billingAddressCollection: false
+        ? 'required'
+        : 'auto',
+      submitType: 'auto'
+    }
+
+	// console.log(options)
+    redirectToCheckout(options)
   }
 
   if (Object.keys(cartDetails).length === 0) {
@@ -78,15 +83,9 @@ const CartDisplay = () => {
         })}
         <h3>Total Items in Cart: {cartCount}</h3>
         <h3>Total Price: {formattedTotalPrice}</h3>
-        <Box
-          as={'form'}
-          action={'/.netlify/functions/create-session'}
-          method="POST"
-        >
-          <Button sx={{ backgroundColor: 'black' }} onClick={handleSubmit}>
+        <Button sx={{ backgroundColor: 'black' }} onClick={handleSubmit}>
             Checkout
-          </Button>
-        </Box>
+        </Button>
         <Button sx={{ backgroundColor: 'black' }} onClick={() => clearCart()}>
           Clear Cart Items
         </Button>
