@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom'
 
 const App = () => {
   function sayHello() {
-    alert('Hello, World!')
+    alert(`Hello, World from ${process.env.BaseURL}`)
   }
 
   return (
