@@ -1,6 +1,5 @@
-baseURL: 'https://example.com/'
 languageCode: en
-title: react minimal example
+title: Hugo react esbuild minimal example
 disableKinds:
   - taxonomyTerm
   - sitemap
